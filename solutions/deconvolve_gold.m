@@ -23,7 +23,7 @@ function u = deconvolve_gold(f,H,options)
 % Jerome Boulanger (2011-2018)
 
 if(~isfield(options,'max_iter'))
-    options.max_iter = 5;
+    options.max_iter = 3;
 end
 if(~isfield(options,'acceleration'))
     options.acceleration = 1.3;
@@ -35,4 +35,6 @@ u = real(ifftn( fftn(f) .* H));
 for iter = 1:options.max_iter
   Hu = real(ifftn(H .* fftn(u)));
   u = u .* (f ./ Hu).^options.acceleration;
+  u = max(0, real(ifftn((H>0).*fftn(u))));  
 end
+

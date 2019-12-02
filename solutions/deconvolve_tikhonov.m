@@ -22,13 +22,13 @@ function u = deconvolve_tikhonov(f,H,options)
 % Jerome Boulanger (2011-2018)
 
 if(~isfield(options,'max_iter'))
-    options.max_iter = 500;
+    options.max_iter = 100;
 end
 if(~isfield(options,'step_size'))
-    options.step_size = 5;
+    options.step_size = 0.5;
 end
 if(~isfield(options,'regularization'))
-    options.regularization = 1e-3;
+    options.regularization = 0.5;
 end
 
 % compute the laplacian filter

@@ -21,10 +21,10 @@ function u = deconvolve_richardsonlucy(f,H,options)
 % Jerome Boulanger (2011-2018)
 
 if(~isfield(options,'max_iter'))
-    options.max_iter = 50;
+    options.max_iter = 20;
 end
 
-f = max(f,0);
+f = max(f,eps);
 
 % initialize the estimate
 u =  real(ifftn( fftn(f) .* H));

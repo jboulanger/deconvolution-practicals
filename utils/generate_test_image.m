@@ -23,12 +23,12 @@ if strcmpi(type,'wavy')
   if (nargin < 3)
     a = 1;
   else
-    a = varargin{1}
+    a = varargin{1};
   end
   if (nargin < 4)
     f = 8;
   else
-    f = varargin{2}
+    f = varargin{2};
   end
   u = randn(n,n);
   [x,y] = meshgrid(-n/2+1:n/2,-n/2+1:n/2);
@@ -39,22 +39,22 @@ elseif strcmpi(type,'fibers')
   if (nargin < 3)
     m = 30;
   else
-    m = varargin{1}
+    m = varargin{1};
   end
   if (nargin < 4)
     l = 2 * n;
   else
-    f = varargin{2}
+    f = varargin{2};
   end
   if (nargin < 5)
     s1 = 50;
   else
-    f = varargin{3}
+    f = varargin{3};
   end
   if (nargin < 6)
     s2 = 1;
   else
-    f = varargin{4}
+    f = varargin{4};
   end
   % init filters
   h1 = fspecial('gaussian',[3*s1,1],s1);
@@ -77,6 +77,13 @@ elseif strcmpi(type,'fibers')
   g = fftshift(exp(-0.5*(x.^2+y.^2)));
   b = rescale(real(ifft2(fft2(u) .* g)), 0, 1);
   u = rescale(b .* (0.5 + u), 0,255);
+elseif strcmpi(type,'steps')
+    if nargin < 3
+        nsteps = 5;
+    else
+        nsteps = varargin{1};
+    end
+    u = round((n-1) * ceil((1:n)' * ones(1,n)/n*nsteps) / nsteps);
 else
   error('underfined type (%s)', type);
 end

@@ -21,7 +21,7 @@ function u = deconvolve_inverse(f, H, options)
 
 
 if(~isfield(options,'regularization'))
-  options.regularization = 0.1;
+  options.regularization = 0.25;
 end
 
 % Compute the regularized inverse filter

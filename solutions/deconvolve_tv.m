@@ -22,13 +22,13 @@ function u = deconvolve_tv(f,H,options)
 % Jerome Boulanger (2011-2018)
 
 if(~isfield(options,'max_iter'))
-    options.max_iter = 500;
+    options.max_iter = 100;
 end
 if(~isfield(options,'step_size'))
     options.step_size = 1;
 end
 if(~isfield(options,'regularization'))
-    options.regularization = 0.01;
+    options.regularization = 0.5;
 end
 if(~isfield(options,'epsilon'))
     options.epsilon = eps;
@@ -51,13 +51,13 @@ for iter = 1:options.max_iter
   if (size(u, 3) == 1)
     gx = imfilter(u, gx_filter);
     gy = imfilter(u, gy_filter);
-    n = sqrt(gx.^2 + gy.^2) + options.epsilon;
+    n = sqrt(gx.^2 + gy.^2 + options.epsilon);
     curv = imfilter(gx./n, dx_filter) + imfilter(gy./n, dy_filter);
   else
     gx = imfilter(u, gx_filter);
     gy = imfilter(u, gy_filter);
     gz = imfilter(u, gz_filter);
-    n = sqrt(gx.^2 + gy.^2 + gz.^2) + options.epsilon;
+    n = sqrt(gx.^2 + gy.^2 + gz.^2 + options.epsilon);
     curv = imfilter(gx./n, dx_filter) + imfilter(gy./n, dy_filter) + imfilter(gz./n, dz_filter);
   end
   du = real(ifftn(HtH.*fftn(u))) - Hf - options.regularization * curv;

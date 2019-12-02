@@ -5,13 +5,11 @@
 %
 %  Jerome Boulanger 2018
 
-clear all
-close all
+clear all;
 addpath('../utils');
 
 
 N = 256; % image size
-sigma = 5; % noise level
 type = 'fibers'; % test image type (ave/fibers)
 
 % generate the OTF
@@ -28,17 +26,20 @@ f = double(imnoise(uint16(Hu), 'poisson'));
 
 % deconvolve the image
 tic
-uest = deconvolve(f, H, 'wiener');
+method = 'Richardson Lucy';
+options.max_iter = 10;
+uest = deconvolve(f, H, method, options);
 toc
 
 % compute mean square error
 mse1 = sqrt(mean((f(:)-u(:)).^2));
 mse2 = sqrt(mean((uest(:)-u(:)).^2));
-fprintf('mean squared error [after/before]: %.2f/%.2f (%.2f%%)\n', mse2, mse1, 100*mse2/mse1);
+fprintf('%s MSE[after/before]: %.2f/%.2f (%.2f%%)\n', ...
+    method, mse2, mse1, 100*mse2/mse1);
 
 % display the results
 figure(1)
-subplot(221), imshow(f,[]);
-subplot(222), fftshow(f,H);
-subplot(223), imshow(uest,[]);
-subplot(224), fftshow(uest,H);
+subplot(221), imshow(f,[]), title('Blurred & Noisy Image')
+subplot(222), fftshow(f,H), title('Log Power Spectrum')
+subplot(223), imshow(uest,[]), title(sprintf('Deconvolved (%s)', method))
+subplot(224), fftshow(uest,H), title('Log Power Spectrum')
