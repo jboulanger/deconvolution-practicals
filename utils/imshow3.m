@@ -9,6 +9,10 @@ if nargin < 2
     range = [min(M(:)) max(M(:))];
 end
 
+if isempty(range)
+    range = [min(M(:)) max(M(:))];
+end
+
 if nargin < 3
     mode = 'slice';
 end
