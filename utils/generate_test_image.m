@@ -63,7 +63,7 @@ elseif strcmpi(type,'fibers')
         s1 = varargin{3};
     end
     if (nargin < 6)
-        bg = 0.2;
+        bg = 0.1;
     else
         bg = varargin{4};
     end

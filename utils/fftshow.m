@@ -3,6 +3,7 @@ function fftshow(data,otf)
 %
 % Jerome Boulanger 2018
 %
+if numel(size(data)) == 2
 imshow(fftshift(log(1+abs(fftn(data)))),[])
 if nargin > 1
   hold on;
@@ -10,4 +11,7 @@ if nargin > 1
   t = linspace(0,2*pi);
   plot(size(data,2)/2+1+r0*cos(t),size(data,1)/2+1+r0*sin(t), 'linewidth',2);
   hold off
+end
+else
+    imshow3(fftshift(log(1+abs(fftn(data)))),[])
 end
