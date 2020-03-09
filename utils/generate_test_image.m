@@ -85,8 +85,7 @@ elseif strcmpi(type,'fibers')
         zi = max(1,floor(z(k)-3)):min(dims(3),ceil(z(k)+3));
         [xs,ys,zs] = meshgrid(xi,yi,zi);
         u(sub2ind(dims,xs,ys,zs)) = u(sub2ind(dims,xs,ys,zs)) + exp(-2*((xs-x(k)).^2+(ys-y(k)).^2+(zs-z(k)).^2));
-    end
-            
+    end            
     % add a background (~scattering)
     if bg > 0
         [kx,ky,kz] = freqgrid(dims);
@@ -106,6 +105,14 @@ elseif strcmpi(type,'steps')
     end
     [x,~,~] = meshgrid(1:dims(2),1:dims(1),1:dims(3));
     u = round(x/nsteps);
+elseif strcmpi(type,'beads')       
+    u = zeros(dims);    
+    p = [8 8 8];      
+    if dims(3) == 1
+        u(mod((1:dims(1))+round(p(1)/2),p(1))==0, mod((1:dims(2))+round(p(2)/2),p(2))==0) = 1;
+    else
+        u(mod((1:dims(1))+round(p(1)/2),p(1))==0, mod((1:dims(2))+round(p(2)/2),p(2))==0, mod((1:dims(3))+round(p(3)/2),p(3))==0) = 1;
+    end
 else
     error('underfined type (%s)', type);
 end
