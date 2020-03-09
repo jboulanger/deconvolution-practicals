@@ -7,6 +7,9 @@ function u = generate_test_image(type,dims,varargin)
 %  type : 'wavy'  or 'fibers'
 %  dims    : size of the image
 %
+% Output 
+%  u  : array of size dims normalize in 0,1 with various patterns defined by type
+%
 % for the wavy pattern, the next parameters are the
 %    bandwidth/smoothness (default 1)
 %    frequency            (default 8)
@@ -45,7 +48,7 @@ if strcmpi(type,'wavy')
         g = exp(-0.1*a.^2*(kx.^2+ky.^2+kz.^2));
     end
     u = normalize(real(ifftn(u .* g)),-1,1);
-    u = normalize(sin(2 * pi * f * u ), 0, 255);
+    u = normalize(sin(2 * pi * f * u ), 0, 1);
 elseif strcmpi(type,'fibers')
     if (nargin < 3)
         m = 30; % number of fibers
@@ -95,7 +98,7 @@ elseif strcmpi(type,'fibers')
         g = exp(-1000*(kx.^2+ky.^2+kz.^2));
     end
         b = normalize(real(ifftn(fftn(u) .* g)),0,1);
-        u = normalize(b .* (bg + u), 0,255);    
+        u = normalize(b .* (bg + u), 0, 1);    
     end        
 elseif strcmpi(type,'steps')
     if nargin < 3

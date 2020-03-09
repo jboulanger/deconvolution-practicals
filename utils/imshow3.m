@@ -1,9 +1,14 @@
-function imshow3(M,range,mode)
-% imshow3(M,range,mode)
+function imshow3(M, range, mode)
+% imshow3(M, range, mode)
 %
 % Display a 3D array using slices in XY XZ YZ
 %
-% Jerome Boulanger (2018)
+% Inputs:
+%  M : (3D) array to display
+%  range : range (caxis). If empty use the min and max of M
+%  mode : can be 'slice', 'average' or 'mip' for max intensity porjection
+%
+% Jerome Boulanger (2018-2020)
 
 if nargin < 2
     range = [min(M(:)) max(M(:))];
