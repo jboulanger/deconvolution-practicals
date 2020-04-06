@@ -110,7 +110,7 @@ elseif strcmpi(type,'steps')
     u = round(x/nsteps);
 elseif strcmpi(type,'beads')       
     u = zeros(dims);    
-    p = [8 8 8];      
+    p = dims / 5;      
     if dims(3) == 1
         u(mod((1:dims(1))+round(p(1)/2),p(1))==0, mod((1:dims(2))+round(p(2)/2),p(2))==0) = 1;
     else
