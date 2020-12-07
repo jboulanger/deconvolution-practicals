@@ -11,16 +11,21 @@ n = 1.33; % medium refractive index
 type = 'fibers'; % test image type (ave/fibers)
 
 % generate the 3D OTF
-H = generate_otf3d(dims, px, NA, wavelength, n);
+H = generate_otf3d(dims, px, NA, wavelength, n, [0 0 0 0 0 0 0 0.1]);
+figure(1); 
+imshow3(log(.00001+fftshift(real(ifftn(H)))),[])
+title('Point spread function')
+
+%%
 
 % generate the test image (ground truth)
-u = generate_test_image(type, dims);
+u = 1000 * generate_test_image(type, dims);
 
 % convolve the test image by the OTF
 Hu = real(ifftn((H .* fftn(u))));
 
 % generate Poisson noise
-f = double(imnoise(uint16(50*Hu), 'poisson'));
+f = double(imnoise(uint16(Hu), 'poisson'));
 
 % deconvolve the image
 tic
@@ -37,7 +42,7 @@ fprintf('%s MSE [after/before]: %.2f/%.2f (%.2f%%)\n', ...
     method, mse2, mse1, 100*mse2/mse1);
 
 % display the results
-figure(1)
+figure(2)
 subplot(221), imshow3(f,[]), title('Blurred & Noisy Image')
 subplot(222), fftshow(f,H), title('Log Power Spectrum')
 subplot(223), imshow3(uest,[]), title(sprintf('Deconvolved (%s)', method))

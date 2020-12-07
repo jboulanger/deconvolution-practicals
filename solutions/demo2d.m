@@ -16,7 +16,7 @@ type = 'fibers'; % test image type (ave/fibers)
 H = generate_otf(N, 4);
 
 % generate the test image (ground truth)
-u = generate_test_image(type, N);
+u = 256 * generate_test_image(type, N);
 
 % convolve the test image by the OTF
 Hu = real(ifft2((H .* fft2(u))));
@@ -27,7 +27,7 @@ f = double(imnoise(uint16(Hu), 'poisson'));
 % deconvolve the image
 tic
 method = 'Richardson Lucy';
-options.max_iter = 10;
+options.max_iter = 100;
 uest = deconvolve(f, H, method, options);
 toc
 
