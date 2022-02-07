@@ -24,12 +24,10 @@ if(~isfield(options,'max_iter'))
     options.max_iter = 20;
 end
 
-f = max(f,eps);
-
 % initialize the estimate
 u =  real(ifftn( fftn(f) .* H));
 
 for iter = 1:options.max_iter
-  Hu = real(ifftn(H .* fftn(u)));
+  Hu = max(0.001,real(ifftn(H .* fftn(u))));
   u = u .* real(ifftn(conj(H) .* fftn(f./ Hu )));
 end

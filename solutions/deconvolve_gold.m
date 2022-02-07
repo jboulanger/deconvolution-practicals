@@ -34,7 +34,6 @@ f = max(f,0);
 u = real(ifftn( fftn(f) .* H));
 for iter = 1:options.max_iter
   Hu = real(ifftn(H .* fftn(u)));
-  u = u .* (f ./ Hu).^options.acceleration;
-  u = max(0, real(ifftn((H>0).*fftn(u))));  
+  u = u .* (f ./ Hu).^options.acceleration;  
 end
 

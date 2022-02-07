@@ -31,10 +31,17 @@ elseif strcmp(mode, 'average')
     A(1:size(M,1),1:size(M,2)) = mean(M,3);
     A(size(M,1)+1:end,1:size(M,2)) = squeeze(mean(M,1))';
     A(1:size(M,1),size(M,2)+1:end) = squeeze(mean(M,2)); 
-else
+elseif strcmp(mode, 'max')  
     A(1:size(M,1),1:size(M,2)) = max(M,[],3);
     A(size(M,1)+1:end,1:size(M,2)) = squeeze(max(M,[],1))';
-    A(1:size(M,1),size(M,2)+1:end) = squeeze(max(M,[],2));    
+    A(1:size(M,1),size(M,2)+1:end) = squeeze(max(M,[],2));  
+elseif strcmp(mode, 'isnan')  
+    M = isnan(M);
+    A(1:size(M,1),1:size(M,2)) = max(M,[],3);
+    A(size(M,1)+1:end,1:size(M,2)) = squeeze(max(M,[],1))';
+    A(1:size(M,1),size(M,2)+1:end) = squeeze(max(M,[],2));  
+    range = [0,1];
 end
+
 A(size(M,1)+1:end,size(M,2)+1:end) = mean(M(:));
 imshow(A,range);
