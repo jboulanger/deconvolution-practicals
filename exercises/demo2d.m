@@ -3,11 +3,11 @@
 % Illustration of image deconvolution on 2D test images
 %
 %
-%  Jerome Boulanger 2018
+%  Jerome Boulanger 
 
 clear all
 close all
-addpath('./.utils');
+addpath('../utils');
 
 N = 256; % image size
 sigma = 5; % noise level

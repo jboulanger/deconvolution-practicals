@@ -20,7 +20,7 @@ function u = deconvolve_gold(f,H,options)
 % Output:
 % u         :  deconvolved image
 %
-% Jerome Boulanger (2011-2018)
+% Jerome Boulanger 
 
 if(~isfield(options,'max_iter'))
     options.max_iter = 5;

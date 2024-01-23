@@ -2,7 +2,7 @@
 %
 % Illustrate 3D deconvolution of microscopy images
 %
-% Jerome Boulanger (2018)
+% Jerome Boulanger
 %
 
 clear all; close all;

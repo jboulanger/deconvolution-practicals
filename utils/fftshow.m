@@ -1,7 +1,7 @@
 function fftshow(data,otf)
 % display the log magnitude of the fourier transform
 %
-% Jerome Boulanger 2018
+% Jerome Boulanger
 %
 if numel(size(data)) == 2
 imshow(fftshift(log(1+abs(fftn(data)))),[])

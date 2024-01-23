@@ -3,7 +3,7 @@ function sigma = noise_std(img)
 %
 % Estimate noise standard deviation using MAD of pseudo-residuals
 %
-% Jerome Boulanger (2011-2018)
+% Jerome Boulanger
 
 noise = pseudoresiduals(img);
 sigma = 1.4826 * median(abs(noise(:)-median(noise(:))));

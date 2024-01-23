@@ -5,7 +5,7 @@ function otf = generate_otf(n,p)
 % n is the size of the image
 % p is the cutoff period in pixels
 %
-% Jerome Boulanger (2018)
+% Jerome Boulanger
 
 v0 = n/p;
 [x, y] = meshgrid(-n/2 : n/2-1, -n/2 : n/2-1);

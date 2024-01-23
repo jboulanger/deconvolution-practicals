@@ -25,7 +25,7 @@ function u = deconvolve_richardsonlucy_tv(f,H,options)
 % regularization for 3D confocal microscope deconvolution’, Microsc. Res.
 % Tech., vol. 69, no. 4, pp. 260–266, Apr. 2006.
 %
-% Jerome Boulanger (2011-2019)
+% Jerome Boulanger
 
 if nargin < 3
     options.method = 'richardsonlucy-TV';

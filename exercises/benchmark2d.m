@@ -2,7 +2,7 @@
 %
 % Test deconvolution methods
 %
-% Jerome Boulanger (2018)
+% Jerome Boulanger
 
 clear all
 addpath('../utils');

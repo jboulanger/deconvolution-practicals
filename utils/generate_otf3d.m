@@ -23,7 +23,7 @@ function [otf,psf,phi] = generate_otf3d(dims,px,NA,wavelength,n,coefficients,sig
 % subplot(121), imshow(fftshift((squeeze(psf(:,:,1)))),[]);colormap jet
 % subplot(122), imshow(fftshift((squeeze(psf(:,1,:))))',[]);colormap jet
 %
-% Jerome Boulanger 2020
+% Jerome Boulanger
 
 if numel(dims) ~= 3
     error('first parameter (dims) need 3 elements')

@@ -17,7 +17,7 @@ function u = deconvolve_inverse(f, H, options)
 % Output:
 %  u       :  deconvolved image
 %
-% Jerome Boulanger (2011-2018)
+% Jerome Boulanger 
 
 
 if(~isfield(options,'regularization'))

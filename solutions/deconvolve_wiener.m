@@ -17,7 +17,7 @@ function u = deconvolve_wiener(f,H,options)
 % Output:
 %  u       :  deconvolved image
 %
-% Jerome Boulanger (2011-2018)
+% Jerome Boulanger
 
 m = mean(f(:));
 f = f - m;

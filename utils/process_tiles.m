@@ -16,7 +16,7 @@ function [su,sw] = process_tiles(img,n,p,fun)
 % Example
 %  
 %  process_tiles(f,64,4,@(x) deconvolve_richardsonlucy_boundary(x,H,options))
-% Jerome Boulanger 2019
+% Jerome Boulanger 
 
 % Split the image in tiles
 k = 1;

@@ -19,7 +19,7 @@ function u = generate_test_image(type,dims,varargin)
 %    smoothness/curvature (default 2)
 %    smoothness/bluriness (default 1)
 %
-% Jerome Boulanger (2018)
+% Jerome Boulanger
 
 if isscalar(dims)
     dims = [dims,dims,1];

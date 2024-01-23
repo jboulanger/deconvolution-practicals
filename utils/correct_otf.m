@@ -6,7 +6,7 @@ function otf = correct_otf(otf,bead_size)
 %
 % The bead is approximated by a Gaussian function.
 %
-% Jerome Boulanger (2018)
+% Jerome Boulanger
 nx = size(otf,2);
 ny = size(otf,1);
 nz = size(otf,3);

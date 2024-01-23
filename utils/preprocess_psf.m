@@ -6,7 +6,7 @@ function psf = preprocess_psf(img,dim,symmetrize)
 % - symmetrize
 % - normalize
 %
-% Jerome Boulanger 2011-2018
+% Jerome Boulanger
 
 if nargin < 3
     symmetrize = true;

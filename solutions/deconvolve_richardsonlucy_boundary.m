@@ -20,7 +20,7 @@ function u = deconvolve_richardsonlucy_boundary(f,H,options)
 % Output:
 % u         :  deconvolved image
 %
-% Jerome Boulanger (2019)
+% Jerome Boulanger
 
 if(~isfield(options,'max_iter'))
     options.max_iter = 50;

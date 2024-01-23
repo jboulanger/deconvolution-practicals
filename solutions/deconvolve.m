@@ -3,7 +3,7 @@ function u = deconvolve(f, H, method, options)
 %
 % Generic deconvolution function
 %
-% Jerome Boulanger (2018)
+% Jerome Boulanger
 
 if nargin < 4
     options.method_name = method;

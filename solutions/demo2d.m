@@ -3,7 +3,7 @@
 % Illustration of image deconvolution on 2D test images
 %
 %
-%  Jerome Boulanger 2018
+%  Jerome Boulanger
 
 clear all;
 addpath('../utils');

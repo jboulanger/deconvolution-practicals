@@ -8,7 +8,7 @@ function imshow3(M, range, mode)
 %  range : range (caxis). If empty use the min and max of M
 %  mode : can be 'slice', 'average' or 'mip' for max intensity porjection
 %
-% Jerome Boulanger (2018-2020)
+% Jerome Boulanger
 
 if nargin < 2
     range = [min(M(:)) max(M(:))];
