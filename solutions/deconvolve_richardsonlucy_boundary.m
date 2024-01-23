@@ -54,6 +54,7 @@ f = padarray(f, options.padsize / options.zoom);
 alpha = real(ifftn( fftn(M) .* conj(H)));
 w = ones(size(alpha));
 w(alpha>0.001) = 1./alpha(alpha>0.001);
+w = w.^0.5;
 
 % initialize the estimate by a constant (important)
 u = mean(f(:))*ones(size(H));
