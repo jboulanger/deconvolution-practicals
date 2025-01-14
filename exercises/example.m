@@ -7,7 +7,7 @@
 
 clear all
 
-addpath('../utils','../data');
+addpath('../utils', '../data');
 
 % Define the input image and bead image
 imgname = './data/img-gfp-tubuline.tif';
@@ -17,7 +17,7 @@ psfname = './data/psf-gfp.tif';
 f = imread3(imgname);
 
 % display the image
-figure(1), imshow3(f,[]);
+figure(1), imshow3(f, []);
 
 % load an image of a fluorescent bead
 b = imread3(psfname);
@@ -26,7 +26,7 @@ b = imread3(psfname);
 h = preprocess_psf(b, size(f), false);
 
 % display the PSF
-figure(2), imshow3(sqrt(h),[]);
+figure(2), imshow3(sqrt(h), []);
 
 % convert the PSF to an OTF
 H = psf2otf(h);
@@ -35,12 +35,12 @@ H = psf2otf(h);
 H = correct_otf(H, 100./[65 65 200]);
 
 % display the otf
-figure(3), imshow3(log(fftshift(abs(H))),[])
+figure(3), imshow3(log(fftshift(abs(H))), [])
 
 % deconvolve the image
 tic
 % modify the options
-method = 'inverse'
+method = 'inverse';
 options.regularization = 0.01;
 %options.max_iter = 5;
 uest = deconvolve(f, H, method, options);

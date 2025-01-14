@@ -27,7 +27,7 @@ f = double(imnoise(uint16(Hu), 'poisson'));
 % deconvolve the image
 tic
 method = 'Gold';
-options.max_iter = 100;
+options.max_iter = 3;
 uest = deconvolve(f, H, method, options);
 toc
 

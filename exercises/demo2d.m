@@ -20,7 +20,7 @@ H = generate_otf(N, 4);
 u = generate_test_image(type, N);
 
 % convolve the test image by the OTF
-Hu = %TODO
+Hu = % TODO
 
 % generate Poisson noise
 f = double(imnoise(uint16(Hu), 'poisson'));

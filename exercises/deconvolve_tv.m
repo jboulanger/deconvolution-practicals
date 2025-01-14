@@ -44,7 +44,7 @@ dz_filter = reshape(dx_filter, [1 1 3]);
 
 % initialization
 Hf = real(ifftn(H .* fftn(f)));
-HtH = conj(H).*H;
+HtH = conj(H) .* H;
 u = Hf;
 for iter = 1:options.max_iter
   % compute curv = div(grad(u)/(|grad(u)|+eps))

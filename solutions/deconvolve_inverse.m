@@ -20,7 +20,7 @@ function u = deconvolve_inverse(f, H, options)
 % Jerome Boulanger
 
 
-if(~isfield(options,'regularization'))
+if(~isfield(options, 'regularization'))
   options.regularization = 0.25;
 end
 

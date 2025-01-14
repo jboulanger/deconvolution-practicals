@@ -1,12 +1,19 @@
 Deconvolution practicals
 =========================
-Implementation of various deconvolution approaches in Matlab used to teaching.
+Implementation of various deconvolution approaches in Matlab.
 
 ## Content
-- exercices : functions with blanks
-- solutions : the solution to the exercises
-- data : datasets 
-- utils : various useful functions
+Here is the content of the repository:
+```
+├── data [datasets]
+├── exercises [exercices]
+├── solutions [solution to the exercices]
+├── test [testing]
+└── utils [various useful functions, io, plot]
+```
+
+## Requirement
+- Matlab
 
 ## Usage
 - Download the code or clone the repository

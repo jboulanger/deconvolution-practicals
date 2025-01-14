@@ -22,20 +22,20 @@ function u = deconvolve_richardsonlucy_boundary(f,H,options)
 %
 % Jerome Boulanger
 
-if(~isfield(options,'max_iter'))
+if(~isfield(options, 'max_iter'))
     options.max_iter = 50;
 end
-if(~isfield(options,'padsize'))
+if(~isfield(options, 'padsize'))
     if numel(size(f)) == 3
         options.padsize = [32 32 16];
     else
         options.padsize = [32 32];
     end
 end
-if(~isfield(options,'zoom'))
+if(~isfield(options, 'zoom'))
     options.zoom=1;
 end
-if(~isfield(options,'background'))
+if(~isfield(options, 'background'))
     f = f - options.background;
 end
 

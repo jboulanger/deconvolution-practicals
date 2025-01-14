@@ -22,10 +22,10 @@ function u = deconvolve_gold(f,H,options)
 %
 % Jerome Boulanger
 
-if(~isfield(options,'max_iter'))
+if(~isfield(options, 'max_iter'))
     options.max_iter = 3;
 end
-if(~isfield(options,'acceleration'))
+if(~isfield(options, 'acceleration'))
     options.acceleration = 1.3;
 end
 
